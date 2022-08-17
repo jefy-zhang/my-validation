@@ -1,19 +1,9 @@
 package com.example.myvalidation.common;
 
-import com.example.myvalidation.common.BusinessCode;
-import com.example.myvalidation.common.Result;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.NotReadablePropertyException;
-import org.springframework.http.HttpStatus;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
-import javax.validation.ConstraintViolationException;
 
 /**
  * @author 陈添明
@@ -22,7 +12,7 @@ import javax.validation.ConstraintViolationException;
 @Slf4j
 public class CommonExceptionHandler {
 
-    @ExceptionHandler({MethodArgumentNotValidException.class})
+    /*@ExceptionHandler({MethodArgumentNotValidException.class})
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public Result handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
@@ -56,5 +46,11 @@ public class CommonExceptionHandler {
     public Result handleException(Exception ex) {
         log.error("未知系统错误", ex);
         return Result.fail(BusinessCode.未知系统错误, ex.getMessage());
+    }*/
+
+    @ExceptionHandler({Exception.class})
+    @ResponseBody
+    public void handleException(Exception e) {
+        e.printStackTrace();
     }
 }
